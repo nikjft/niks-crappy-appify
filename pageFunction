@@ -1,0 +1,26 @@
+function pageFunction(context) {
+var links = document.querySelectorAll('table.cal a');
+
+  // Iterate thru all release notes
+  var result = [];
+  for (var i = 0; i < links.length; i ++) {
+    
+    var url = links[i].href;
+    var date = links[i].href.match(/date=([0-9\-]+)/)[1];
+    var title = 'Sinfest: ' + links[i].title;
+    var description = 'Sinfest comic for ' + date;
+    
+    
+    var date = headings[i].innerText;
+    var description = lists[i].outerHTML;
+
+    result.push({
+      title       : title,
+      description : description,
+      link        : url,
+      guid        : date,
+      pubDate     : (new Date(date)).toUTCString()
+    });
+  }
+  return result;
+}
